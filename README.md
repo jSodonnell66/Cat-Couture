@@ -42,7 +42,7 @@ Here are some of the key achievements and highlights of the Cat Couture E-commer
 
 ### Deployment
 
-- Deployed the application, ensuring that it works as expected and provided a public URL for easy access: [](https://cat-couture-wmtw.onrender.com/)
+- Deployed the application, ensuring that it works as expected and provided a public URL for easy access: https://cat-couture-wmtw.onrender.com/
 
 ### Code Quality
 
