@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Welcome to the Cat Couture E-commerce Platform, a practical demonstration of my skills as a full-stack developer. In this project, I've taken on the responsibility of completing a piece of work for Cat Couture, an online shop specializing in the latest cat fashion. The project includes various features and functionalities, and I've utilized a range of technical skills and development best practices that I've learned over the years.
+Welcome to the Cat Couture E-commerce Platform, a practical demonstration of my skills as a full-stack developer. In this project, I've taken on the responsibility of completing a piece of work for Cat Couture, an online shop specializing in the latest cat fashion. The project includes various features and functionalities, and I've utilized a range of technical skills and development best practices that I've learned over the year.
 
 ## Key Achievements
 
