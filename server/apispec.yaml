@@ -1,0 +1,199 @@
+openapi: "3.0.2"
+info:
+  version: "1.0"
+  title: Products API
+  description: This API allows users to manage products and reports.
+  contact:
+    name: Your Name
+    email: your.email@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: "http://localhost:5001/api"
+    description: Development server
+  - url: "https://web-service-cat-couture.onrender.com/api"
+    description: Production server
+
+paths:
+  /products:
+    get:
+      summary: Returns a list of products
+      description: Get a list of products with pagination support.
+      operationId: get-products
+      tags:
+        - products
+      parameters:
+        - in: query
+          name: page
+          description: The page number.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: limit
+          description: The number of products per page.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  currentPage:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  totalItems:
+                    type: integer
+                required:
+                  - products
+                  - currentPage
+                  - totalPages
+                  - itemsPerPage
+                  - totalItems
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /reports:
+    get:
+      summary: Returns a list of reports
+      description: Get a list of reports.
+      operationId: get-reports
+      tags:
+        - reports
+      security:
+        - oauth2: [read:reports]
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categoryReport:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/categoryReport"
+                  discountReport:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/discountReport"
+                required:
+                  - categoryReport
+                  - discountReport
+
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        categoryName:
+          type: string
+          nullable: true
+        imageName:
+          type: string
+          nullable: true
+        imageDescription:
+          type: string
+          nullable: true
+        discountType:
+          type: string
+          nullable: true
+        discountValue:
+          type: number
+          nullable: true
+      required:
+        - id
+        - name
+        - description
+        - price
+
+    categoryReport:
+      type: object
+      properties:
+        categoryName:
+          type: string
+        totalProducts:
+          type: integer
+        discountedProducts:
+          type: integer
+      required:
+        - categoryName
+        - totalProducts
+        - discountedProducts
+
+    discountReport:
+      type: object
+      properties:
+        discountType:
+          type: string
+          nullable: true
+        totalProducts:
+          type: integer
+      required:
+        - discountType
+        - totalProducts
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+
+tags:
+  - name: products
+    description: API endpoints related to products
+  - name: reports
+    description: API endpoints related to reports

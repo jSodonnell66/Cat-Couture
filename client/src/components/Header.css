@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Barriecito&family=Oi&display=swap");
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.menu img {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.header h1.logo {
+  font-family: "Barriecito", cursive;
+  font-size: 6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+.rightLinks {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.rightLinkItems {
+  font-size: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.activeLink {
+  font-weight: bold;
+}
+
+.navButton {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.navButton:hover {
+  background-color: #007bff;
+}

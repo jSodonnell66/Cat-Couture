@@ -1,0 +1,16 @@
+body {
+  background-color: #f2c4ec;
+  margin: 0;
+  padding: 0;
+}
+
+.page-padding,
+footer {
+  background-color: #fff;
+  text-align: center;
+}
+
+.header,
+.footer {
+  text-align: center;
+}
